@@ -16,3 +16,69 @@ There has been times in the past when these branches accomodated minor bug fixes
 
 * Noetic: [1.2.x](https://github.com/stonier/sophus/tree/release/1.2.x), sync'd with [sophus/master@593db475](https://github.com/strasdat/Sophus/commit/593db47500ea1a2de5f0e6579c86147991509c59) (July 15, 2020)
 * Melodic: [1.1.x](https://github.com/stonier/sophus/tree/release/1.1.x), sync'd with [sophus/master@ef9551ff](https://github.com/strasdat/Sophus/tree/ef9551ff429899b5adae66eabd5a23f165953199) (Oct 13, 2019).
+
+## About
+
+This is a ros 3rd party package that provides Hauke Strasdat's
+[sophus](https://github.com/stonier/sophus) library.
+
+## Installation From Deb
+
+
+
+```
+$ sudo apt-get install ros-kinetic-sophus
+```
+
+
+
+To use it from your own catkin package you need to make sure you get the
+dependency syntax right. The cmake commands in particular are subtly
+different from depending on a catkin package. An example:
+
+**CMakeLists.txt**
+
+
+
+```highlight
+find_package(catkin REQUIRED COMPONENTS                                   
+                 ecl_linear_algebra
+                 ecl_time 
+                 dslam_common
+                 )
+find_package(sophus REQUIRED)
+
+catkin_package(
+    INCLUDE_DIRS include 
+    LIBRARIES ${PROJECT_NAME}
+    DEPENDS                
+        sophus
+    CATKIN_DEPENDS                
+        ecl_linear_algebra
+        ecl_time
+        dslam_common
+    )
+```
+
+
+
+**package.xml** 
+
+```highlight
+  <build_depend>ecl_linear_algebra</build_depend>
+  <build_depend>ecl_time</build_depend>
+  <build_depend>sophus</build_depend>
+  <build_depend>dslam_common</build_depend>
+
+
+  <run_depend>ecl_linear_algebra</run_depend>
+  <run_depend>ecl_time</run_depend>
+  <run_depend>sophus</run_depend>
+  <run_depend>dslam_common</run_depend>
+```
+
+
+
+## Installation from Source
+
+See the [README](https://github.com/stonier/sophus).
